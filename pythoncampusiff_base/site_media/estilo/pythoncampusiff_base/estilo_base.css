@@ -1,12 +1,13 @@
 body {
     padding: 0;
     margin: 0;
-    font-family: verdana, helvetica;
+    font-family: Arial,Helvetica,Sans-serif;
 }
 
 /* Cabeçalho */
 #cabecalho {
     height: 74px;
+    padding: 10px 0;
     border-bottom: 1px dashed #c3c3c3;
 }
 
@@ -41,7 +42,6 @@ body {
     -moz-border-radius:5px;
     -khtml-border-radius:5px;
     -webkit-border-radius:5px;
-    /*border-right: 1px solid #C3C3C3;*/
 }
 
 #cabecalho #navegacao ul li{
@@ -53,7 +53,6 @@ body {
     -moz-border-radius:5px;
     -khtml-border-radius:5px;
     -webkit-border-radius:5px;
-    /*border-left: 1px solid #C3C3C3;*/
 }
 
 #cabecalho #navegacao ul li a {
@@ -88,9 +87,7 @@ body {
 /* conteudo */
 #conteudo {
     width: 960px;
-    position: relative;
-    left: 50%;
-    margin-left: -481px;
+    margin: 0 auto;
 }
 
 /* Rodapé */
