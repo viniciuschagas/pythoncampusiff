@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br" lang="pt-br">
+    <head>
+        <title>
+            PythOnCampus IFF
+            {% block titulo %}
+            {% endblock titulo %}
+        </title>
+        <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/estilo/pythoncampusiff_base/estilo_base.css"/>
+        
+        {% block estilo_extra %}
+        {% endblock estilo_extra %}
+        
+        {% block scripts %}
+        {% endblock scripts %}
+    </head>
+    <body>
+        <div id="cabecalho">
+            <div id="logo">
+                <a href="/">
+                    <img src="{{ MEDIA_URL }}/imagens/pythoncampusiff_base/logo.png" alt="PythonOnCampus IFF" title="PythonOnCampus IFF" />
+                </a>
+            </div>
+            <div id="navegacao">
+                <ul>
+                    <li>
+                        <a href="/">Início</a>
+                    </li>
+                    <li>
+                        <a href="/programacao">Programação</a>
+                    </li>
+                    <li>
+                        <a href="/inscricao">Inscrição</a>
+                    </li>
+                    <li>
+                        <a href="/local">Local</a>
+                    </li>
+                    <li>
+                        <a href="/contato">Contato</a>
+                    </li>
+                    <li>
+                        <a href="/equipe">Equipe</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="conteudo">
+            {% block conteudo %}
+            
+            {% endblock conteudo %}
+        </div>
+        <div id="rodape">
+            NSI - Núcleo de Pesquisa em Sistemas de Informação - Instituto Federal Fluminense
+            <div id="links_rodape">
+                <a href="/equipe/">Equipe NSI</a> |
+                <a href="/equipe_site/">Equipe do Site</a>
+            </div>
+            <div id="django_powered">
+                <a href="http://www.djangoproject.com/">
+                    <img src="{{ MEDIA_URL }}/imagens/pythoncampusiff_base/djangopowered126x54.gif"
+                        style="border:0;width:100px;height:43px"
+                        alt="Powered by Django."
+                        title="Powered by Django." />
+                </a>
+            </div>
+        </div>
+    </body>
+</html>
