@@ -85,7 +85,10 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.join(PROJECT_ROOT_PATH,'pythoncampus_base/templates'),
+    os.path.join(PROJECT_ROOT_PATH,'pythoncampusiff_base/templates'),
+    os.path.join(PROJECT_ROOT_PATH,'pythoncampusiff_programacao/templates'),
+    os.path.join(PROJECT_ROOT_PATH,'pythoncampusiff_inscricao/templates'),
+    os.path.join(PROJECT_ROOT_PATH,'pythoncampusiff_contato/templates'),
 )
 
 INSTALLED_APPS = (
@@ -96,4 +99,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.admin',
     'pythoncampusiff.pythoncampusiff_base',
+    'pythoncampusiff.pythoncampusiff_programacao',
+    'pythoncampusiff.pythoncampusiff_inscricao',
+    'pythoncampusiff.pythoncampusiff_contato',
 )
