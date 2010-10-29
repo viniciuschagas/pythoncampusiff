@@ -4,6 +4,7 @@ from django.db import models
 TIPO_ATIVIDADE = (
     ('Dojo','Dojo'),
     ('Minicurso','Minicurso'),
+    ('OpenSpace','Open Space'),
     ('Palestra','Palestra')
 )
 
@@ -22,7 +23,8 @@ class Responsavel(models.Model):
     )
     foto = models.ImageField(
         verbose_name = 'Foto',
-        upload_to = 'imagens/fotos_dos_responsaveis'
+        upload_to = 'imagens/fotos_dos_responsaveis',
+        default='imagens/pythoncampusiff_base/responsavel_default.png'
     )
     site = models.CharField(verbose_name="site", max_length=300)
     

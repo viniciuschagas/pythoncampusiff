@@ -6,7 +6,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    (r'^$', include('pythoncampusiff_base.urls')),
+    (r'^', include('pythoncampusiff_base.urls')),
     (r'^programacao', include('pythoncampusiff_programacao.urls')),
     (r'^inscricao', include('pythoncampusiff_inscricao.urls')),
     (r'^contato', include('pythoncampusiff_contato.urls')),

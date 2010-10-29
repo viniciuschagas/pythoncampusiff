@@ -7,6 +7,7 @@
 {% endblock estilo_extra %}
 
 {% block conteudo %}
+    <h1>Programação</h1>
     <div id="programacao">
         {% for atividade in atividades %}
             <div class="atividade">
@@ -22,6 +23,9 @@
                         <div class="descricao">
                             {{ atividade.responsavel.nome }}<br />
                             {{ atividade.responsavel.descricao|linebreaksbr }}
+                        </div>
+                        <div class="site">
+                            <a href="{{ atividade.responsavel.site }}">{{ atividade.responsavel.site }}</a>
                         </div>
                     </div>
                 </div>

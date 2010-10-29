@@ -6,3 +6,9 @@ def index(request):
         'index.html',
         context_instance = RequestContext(request)
     )
+
+def local(request):
+    return render_to_response(
+        'local.html',
+        context_instance = RequestContext(request)
+    )

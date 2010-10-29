@@ -103,3 +103,9 @@ INSTALLED_APPS = (
     'pythoncampusiff.pythoncampusiff_inscricao',
     'pythoncampusiff.pythoncampusiff_contato',
 )
+
+EMAIL_HOST="server.com"#Configurar servidor de e-mail
+EMAIL_PORT="25"
+EMAIL_HOST_USER=""
+EMAIL_HOST_PASSWORD=""
+EMAIL_USE_TLS=False

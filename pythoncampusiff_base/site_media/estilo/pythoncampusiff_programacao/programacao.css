@@ -28,10 +28,20 @@
     min-height: 125px;
 }
 
-.dados .responsavel .foto{
+.dados .responsavel .foto {
     float: left;
+}
+
+.dados .responsavel .foto img {
+    width: 100px;
 }
 
 .dados .responsavel .descricao {
     margin-left: 110px;
+}
+
+.dados .responsavel .site {
+    clear: both;
+    margin-left: 110px;
+    text-align: center;
 }
