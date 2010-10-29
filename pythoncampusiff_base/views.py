@@ -12,3 +12,15 @@ def local(request):
         'local.html',
         context_instance = RequestContext(request)
     )
+
+def equipe(request):
+    return render_to_response(
+        'equipe.html',
+        context_instance = RequestContext(request)
+    )
+
+def equipe_do_site(request):
+    return render_to_response(
+        'equipe_do_site.html',
+        context_instance = RequestContext(request)
+    )

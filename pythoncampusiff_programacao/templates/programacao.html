@@ -21,7 +21,7 @@
                             <img src="{{ MEDIA_URL }}/{{ atividade.responsavel.foto }}" alt="{{ atividade.responsavel.nome }}" title="{{ atividade.responsavel.nome }}" />
                         </div>
                         <div class="descricao">
-                            {{ atividade.responsavel.nome }}<br />
+                            <span class="nome_responsavel">{{ atividade.responsavel.nome }}</span><br />
                             {{ atividade.responsavel.descricao|linebreaksbr }}
                         </div>
                         <div class="site">

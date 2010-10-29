@@ -21,10 +21,11 @@
     border: 1px dashed #c3c3c3;
     border-top: none !important;
     padding-left: 5px;
+    padding-top: 10px;
 }
 
 .dados .responsavel {
-    margin-top: 5px;
+    margin-top: 15px;
     min-height: 125px;
 }
 
@@ -38,6 +39,10 @@
 
 .dados .responsavel .descricao {
     margin-left: 110px;
+}
+
+.dados .responsavel .descricao .nome_responsavel {
+    text-decoration: underline;
 }
 
 .dados .responsavel .site {
