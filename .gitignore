@@ -1,5 +1,6 @@
 *.komodoproject
 *.pyc
 *~
+*.db
 .komodotools
 pythoncampusiff_base/site_media/imagens/fotos_dos_responsaveis

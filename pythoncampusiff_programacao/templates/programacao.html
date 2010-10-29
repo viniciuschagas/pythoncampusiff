@@ -2,6 +2,30 @@
 
 {% block titulo %} - Programação{% endblock titulo %}
 
+{% block estilo_extra %}
+    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/estilo/pythoncampusiff_programacao/programacao.css"/>
+{% endblock estilo_extra %}
+
 {% block conteudo %}
-    Programação em breve...
+    <div id="programacao">
+        {% for atividade in atividades %}
+            <div class="atividade">
+                <div class="cabecalho">
+                    {{ atividade.tipo }} - {{ atividade.titulo }} <span>{{ atividade.hora }}</span>
+                </div>
+                <div class="dados">
+                    {{ atividade.resumo}}
+                    <div class="responsavel">
+                        <div class="foto">
+                            <img src="{{ MEDIA_URL }}/{{ atividade.responsavel.foto }}" alt="{{ atividade.responsavel.nome }}" title="{{ atividade.responsavel.nome }}" />
+                        </div>
+                        <div class="descricao">
+                            {{ atividade.responsavel.nome }}<br />
+                            {{ atividade.responsavel.descricao|linebreaksbr }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock conteudo %}

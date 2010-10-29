@@ -8,6 +8,12 @@ TIPO_ATIVIDADE = (
 )
 
 class Responsavel(models.Model):
+    
+    
+    class Meta:
+        verbose_name_plural = 'Responsáveis'
+
+
     nome = models.CharField(verbose_name = 'nome', max_length = 100)
     descricao = models.TextField(verbose_name = 'Descrição')
     instituicao = models.CharField(
@@ -18,21 +24,34 @@ class Responsavel(models.Model):
         verbose_name = 'Foto',
         upload_to = 'imagens/fotos_dos_responsaveis'
     )
+    site = models.CharField(verbose_name="site", max_length=300)
     
     def __unicode__(self):
         return self.nome
 
 
 class Atividade(models.Model):
+    
+    class Meta:
+        ordering = ('hora','tipo')
+
+
     titulo = models.CharField(verbose_name = 'título', max_length = 300)
-    resumo = models.TextField(verbose_name = 'resumo')
+    resumo = models.TextField(verbose_name = 'resumo', blank=True, null=True)
     tipo = models.CharField(
         verbose_name = 'tipo',
         max_length = 9,
-        choices = TIPO_ATIVIDADE
+        choices = TIPO_ATIVIDADE,
+        blank=True,
+        null=True
     )
-    responsavel = models.ForeignKey(Responsavel)
-    local = models.CharField(verbose_name = 'local', max_length = 100)
+    responsavel = models.ForeignKey(Responsavel, blank=True, null=True)
+    local = models.CharField(
+        verbose_name = 'local',
+        max_length = 100,
+        blank=True,
+        null=True
+    )
     hora = models.TimeField(verbose_name = 'hora')
     
     def __unicode__(self):
