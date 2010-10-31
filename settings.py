@@ -99,6 +99,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.admin',
     'pythoncampusiff.pythoncampusiff_base',
+    'pythoncampusiff.pythoncampusiff_atividades',
     'pythoncampusiff.pythoncampusiff_programacao',
     'pythoncampusiff.pythoncampusiff_inscricao',
     'pythoncampusiff.pythoncampusiff_contato',
