@@ -58,6 +58,21 @@ class Atividade(models.Model):
         null=True
     )
     hora = models.TimeField(verbose_name = 'hora')
+    vagas_disponiveis = models.IntegerField(
+        verbose_name='vagas disponíveis',
+        default=0
+    )
     
     def __unicode__(self):
         return self.titulo
+    
+    def registrar_participante(self, participante):
+        if self.tipo == 'Minicurso':
+            self.inscrito_set.add(participante)
+            self.save()
+
+    def decrementar_vaga(self):
+        if self.tipo == 'Minicurso':
+            if self.vagas_disponiveis >= 1:
+                self.vagas_disponiveis -= 1
+                self.save()
