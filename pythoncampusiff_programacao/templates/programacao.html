@@ -22,7 +22,8 @@
                         </div>
                         <div class="descricao">
                             <span class="nome_responsavel">{{ atividade.responsavel.nome }}</span><br />
-                            {{ atividade.responsavel.descricao|linebreaksbr }}
+                            {{ atividade.responsavel.minicurriculo|linebreaksbr }}<br />
+                            Instituição/Empresa: {{ atividade.responsavel.instituicao }}
                         </div>
                         <div class="site">
                             <a href="{{ atividade.responsavel.site }}">{{ atividade.responsavel.site }}</a>
