@@ -42,7 +42,7 @@ class Inscrito(models.Model):
         elif periodo == 'tarde':
             self.minicurso_da_tarde = minicurso
         # Adicionar id de inscricao no e-mail
-        #send_mail(u'[PythOnCampus IFF] Confirme sua presença!', u'Atenção! Para assegurar sua vaga nos minicursos, traga 1kg de arroz, feijão ou macarrão para cada minicurso no qual você estiver inscrito até 26/11/2009. O local de confirmação e arrecadação é o NSI - Núcleo de Pesquisa em Sistemas de Informação (Sala 104, Bloco F), localizado no IFF Campus Campos-Centro (Antigo Cefet Campos), das 14:00 às 19:00 hs. Importante: Será respeitada a ordem de entrega do alimento para o preenchimento das vagas!', 'pythoncampus@iff.edu.br', [self.email,], fail_silently=True)
+        #send_mail(u'[PythOnCampus IFF] Confirme sua presença!', u'Atenção! Para assegurar sua vaga nos minicursos, traga 1kg de arroz, feijão ou macarrão para cada minicurso no qual você estiver inscrito até 10/11/2009. O local de confirmação e arrecadação é o NSI - Núcleo de Pesquisa em Sistemas de Informação (Sala 104, Bloco F), localizado no IFF Campus Campos-Centro (Antigo Cefet Campos), das 14:00 às 19:00 hs. Importante: Será respeitada a ordem de entrega do alimento para o preenchimento das vagas!', 'pythoncampus@iff.edu.br', [self.email,], fail_silently=True)
 
     def confirmar_inscricao(self):
         try:

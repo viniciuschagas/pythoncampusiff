@@ -51,18 +51,15 @@
 
         function mascara_cpf() {
             $('#id_cpf').keyup(function(){
-                if ($(this).val().length <= 14) {
+                if ($(this).val().length <= 11) {
                     $(this).attr(
                         'value',
                         $(this).val()
                             .replace(/\D/g,'')
-                            .replace(/(\d{3})(\d)/,'$1.$2')
-                            .replace(/(\d{3})(\d)/,'$1.$2')
-                            .replace(/(\d{3})(\d)/,'$1-$2')
                     );
                 }
                 else {
-                    $(this).attr('value',$(this).val().substr(0,14));
+                    $(this).attr('value',$(this).val().substr(0,11));
                 }
             });
         }

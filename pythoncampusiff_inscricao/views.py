@@ -52,7 +52,7 @@ def confirmar_inscricao(request):
             'confirmar_inscricao.html',
             {
                 'minicursos': minicursos,
-                'mensagem': 'Confirmação Realizada Com Sucesso!'
+                'mensagem': u'Confirmação Realizada Com Sucesso!'
             },
             context_instance = RequestContext(request)
         )
@@ -86,7 +86,7 @@ def buscar_inscrito(request):
         if minicurso_da_manha is not None:
             minicurso_da_manha_titulo = minicurso_da_manha.titulo
             if minicurso_da_manha.vagas_disponiveis > 0:
-                status_minicurso_da_manha = 'Disponível'
+                status_minicurso_da_manha = u'Disponível'
             else:
                 status_minicurso_da_manha = 'Esgotado'
         else:
@@ -96,7 +96,7 @@ def buscar_inscrito(request):
         if minicurso_da_tarde is not None:
             minicurso_da_tarde_titulo = minicurso_da_tarde.titulo
             if minicurso_da_tarde.vagas_disponiveis > 0:
-                status_minicurso_da_tarde = 'Disponível'
+                status_minicurso_da_tarde = u'Disponível'
             else:
                 status_minicurso_da_tarde = 'Esgotado'
         else:
@@ -180,13 +180,13 @@ def inscricao_login(request):
         else:
             return render_to_response(
                 'organizacao.html',
-                {'mensagem_de_erro':'Sua conta está inativa!'},
+                {'mensagem_de_erro':u'Sua conta está inativa!'},
                 context_instance = RequestContext(request)
             )
     else:
         return render_to_response(
             'organizacao.html',
-            {'mensagem_de_erro':'Login ou Senha inválido!'},
+            {'mensagem_de_erro':u'Login ou Senha inválido!'},
             context_instance = RequestContext(request)
         )
 
