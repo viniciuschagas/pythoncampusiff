@@ -15,7 +15,8 @@
                     {{ atividade.tipo }} - {{ atividade.titulo }} <span>{{ atividade.hora }}</span>
                 </div>
                 <div class="dados">
-                    {{ atividade.resumo}}
+                    {{ atividade.resumo}}<br />
+                    Local: <span class="local">{{ atividade.local }}</span>
                     <div class="responsavel">
                         <div class="foto">
                             <img src="{{ MEDIA_URL }}/{{ atividade.responsavel.foto }}" alt="{{ atividade.responsavel.nome }}" title="{{ atividade.responsavel.nome }}" />

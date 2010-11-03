@@ -1,0 +1,28 @@
+#cabecalho {
+    height: 74px;
+}
+
+#dados_do_minicurso {
+    margin-left: 320px;
+    padding-top: 10px;
+}
+
+#logo {
+    float: left;
+}
+
+table {
+    border: 1px solid #000000;
+    border-collapse: collapse;
+    width: 960px;
+}
+
+table th, tr, td {
+    border: 1px solid #000000;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+table td {
+    width: 50%;
+}

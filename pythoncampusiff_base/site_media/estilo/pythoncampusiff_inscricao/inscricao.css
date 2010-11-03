@@ -1,0 +1,27 @@
+#aviso_minicurso, #botao_exibir_minicursos {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+form {
+    margin-bottom: 10px;
+}
+
+#minicursos {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#minicursos_da_manha, #minicursos_da_tarde {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.aviso {
+    margin-bottom: 5px;
+    color: #ff0000;
+}
+
+input[type="text"] {
+    width: 400px;
+}

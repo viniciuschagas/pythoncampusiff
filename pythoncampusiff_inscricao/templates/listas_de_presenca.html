@@ -1,0 +1,17 @@
+{% extends "organizacao.html" %}
+
+{% block titulo %} - Listas de Presença{% endblock titulo %}
+
+{% block subconteudo %}
+    <h1>Listas de Presença</h1>
+    <h2>Minicursos</h2>
+    <ul>
+        {% for minicurso in minicursos %}
+            <li><a href="/inscricao/lista_de_presenca_do_minicurso/{{ minicurso.id }}">{{ minicurso.titulo }}</a></li>
+        {% endfor %}
+    </ul>
+    <h2>Outros</h2>
+    <ul>
+        <li><a href="/inscricao/lista_de_presenca_das_palestras">Palestras</a></li>
+    </ul>
+{% endblock subconteudo %}

@@ -1,0 +1,74 @@
+{% extends "pagina_base.html" %}
+
+{% block titulo %} - Organização{% endblock titulo %}
+
+{% block estilo_extra %}
+    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/estilo/pythoncampusiff_inscricao/organizacao.css" />
+{% endblock estilo_extra %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ MEDIA_URL }}/javascripts/jquery-1.4.2.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+           $('#nome_de_usuario').focus(); 
+        });
+    </script>
+{% endblock scripts %}
+
+{% block conteudo %}
+    {% if user.is_authenticated %}
+    <div id="topnav" class="topnav">
+        <div id="mensagem_usuario">
+            Bem Vindo,
+            {% ifnotequal user.first_name ''%}
+                {{ user.first_name }} |
+            {% else %}
+                {{ user.username }} |
+            {% endifnotequal %}
+        </div>
+        <div id="signoff_div">
+            <form method="post" id="signoff" action="/inscricao/inscricao_logout">{% csrf_token %}
+                <input id="signoff_submit" value="Sair" tabindex="6" type="submit">
+            </form>
+        </div>
+    </div>
+    <div class="submenu_titulo">Submenu da organização</div>
+    <div class="submenu">
+        <ul id="navegacao_organizacao">
+            <li><a href="/inscricao/confirmar">Confirmar inscrição</a></li>
+            <li><a href="/inscricao/listas_de_presenca">Listas de presenca</a></li>
+        </ul>
+    </div>
+    {% block subconteudo %}
+        
+    {% endblock subconteudo %}
+    {% else %}
+        <h1>Área Restrita</h1>
+        <div id="container_login">
+            <form method="post" id="signin" action="/inscricao/inscricao_login">{% csrf_token %}
+                <div>
+                    <label for="nome_de_usuario">Nome de usuário:</label>
+                </div>
+                <div>
+                    <input  type="text" id="nome_de_usuario" name="nome_de_usuario" title="nome de usuario" />
+                </div>
+                <div>
+                    <label for="senha">Senha:</label>
+                </div>
+                <div>
+                    <input type="password" id="senha" name="senha" title="senha" />
+                </div>
+                <div>
+                    <input type="submit" id="signin_submit" value="Entrar" />
+                </div>
+            </form>
+            <div>
+                <span id="mensagem_de_erro">
+                    {% if mensagem_de_erro %}
+                        {{ mensagem_de_erro }}
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+    {% endif %}
+{% endblock conteudo %}

@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     (r'^contato/', include('pythoncampusiff_contato.urls')),
     (r'^atividades/', include('pythoncampusiff_atividades.urls')),
     (r'^admin/', include(admin.site.urls)),
+    (r'^accounts/login/$', 'django.contrib.auth.views.login'),
     (r'^site_media/(.*)$', 'django.views.static.serve',
         {'document_root': settings.MEDIA_ROOT}
     ),

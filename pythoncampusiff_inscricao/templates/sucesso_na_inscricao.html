@@ -1,0 +1,23 @@
+{% extends "pagina_base.html" %}
+
+{% block titulo %} - Inscrição Realizada com Sucesso{% endblock titulo %}
+
+{% block estilo_extra %}
+    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/estilo/pythoncampusiff_inscricao/inscricao.css" />
+{% endblock estilo_extra %}
+
+{% block conteudo %}
+    <h1>Inscrição realizada com sucesso</h1>
+    <p>
+        <strong>{{ inscrito.nome }}</strong>, seu código de inscrição é <strong>{{ inscrito.id }}</strong>.
+    </p>
+    {% if inscrito_em_minicurso %}
+        <p>
+            <span class="aviso">Não se esqueça de levar o alimento até o NSI para confirmar a sua inscrição
+            no(s) minicurso(s).</span>
+        </p>
+    {% endif %}
+    <p>
+        <strong>A organização da PythOnCampus IFF agradece o seu interesse!</strong>
+    </p>
+{% endblock conteudo %}

@@ -1,0 +1,140 @@
+{% extends "organizacao.html" %}
+
+{% block titulo %} - Confirmar Inscrição{% endblock titulo %}
+
+{% block estilo_extra %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/estilo/pythoncampusiff_inscricao/confirmar.css" />
+{% endblock estilo_extra %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ MEDIA_URL }}/javascripts/jquery-1.4.2.js"></script>
+    <script type="text/javascript">
+        function limpar(){
+            $('#formulario_confirmacao').hide();
+            $('#id_inscrito').attr('value','');
+            $('#dados_do_inscrito').html('');
+            $('#mensagem').html('');
+            $('#identificacao').focus();
+        }
+        $(document).ready(function(){
+            $('#formulario_confirmacao').hide();
+            $('#identificacao').focus();
+            $('#botao_buscar').click(function(){
+                limpar();
+                $.get(
+                    '/inscricao/buscar_inscrito',
+                    {'identificacao':$('#identificacao').val()},
+                    function(resposta) {
+                        if(resposta[0].inscritoEncontrado == 'True') {
+                            html = '<h2>Dados do Inscrito</h2>';
+                            html += '<div>Nome do inscrito: '+resposta[0].nomeInscrito+'</div>';
+                            if(resposta[0].estadoInscrito == 'confirmado') {
+                                html += '<div>Estado do inscrito: <span class="atencao">'+resposta[0].estadoInscrito+'</span></div>';
+                            }
+                            else {
+                                html += '<div>Estado do inscrito: <span class="disponivel">'+resposta[0].estadoInscrito+'</span></div>';
+                            }
+                            
+                            html += '<div>Minicurso da manhã: '
+                            if(resposta[0].minicurso_da_manha != 'Nenhum') {
+                                html += resposta[0].minicurso_da_manha;
+                            }
+                            else {
+                                html += '<span class="atencao">'+resposta[0].minicurso_da_manha+'</span>';
+                            }
+                            
+                            if(resposta[0].estadoInscrito != 'confirmado') {
+                                if(resposta[0].status_minicurso_da_manha == 'Disponível') {
+                                    html += ' - <span class="disponivel"> '+resposta[0].status_minicurso_da_manha+'</span></div>';
+                                }
+                                else {
+                                    html += ' - <span class="esgotado"> '+resposta[0].status_minicurso_da_manha+'</span></div>';
+                                }
+                            }
+                            
+                            html += '<div>Minicurso da tarde: ';                            
+                            if(resposta[0].minicurso_da_tarde != 'Nenhum') {
+                                html += resposta[0].minicurso_da_tarde;
+                            }
+                            else {
+                                html += '<span class="atencao">'+resposta[0].minicurso_da_tarde+'</span>';
+                            }
+                            
+                            if(resposta[0].estadoInscrito != 'confirmado') {
+                                if(resposta[0].status_minicurso_da_tarde == 'Disponível') {
+                                    html += ' - <span class="disponivel"> '+resposta[0].status_minicurso_da_tarde+'</span></div>';   
+                                }
+                                else {
+                                    html += ' - <span class="esgotado"> '+resposta[0].status_minicurso_da_tarde+'</span></div>';
+                                }
+                            }
+                            
+                            $('#mensagem').html('');
+                            $('#dados_do_inscrito').html(html);
+                            $('#id_inscrito').attr('value',resposta[0].idInscrito);
+                            if((resposta[0].estadoInscrito != 'confirmado') &&
+                              ((resposta[0].minicurso_da_manha != 'Nenhum') || (resposta[0].minicurso_da_tarde != 'Nenhum')) &&
+                              ((resposta[0].status_minicurso_da_manha == 'Disponível') || (resposta[0].status_minicurso_da_tarde == 'Disponível'))
+                              )
+                            {
+                                $('#formulario_confirmacao').show();
+                            }
+                        }
+                        else {
+                            $('#mensagem').html('Nenhum resultado encontrado para '+resposta[0].identificacao);
+                        }
+                    }
+                );
+            });
+            $('#botao_limpar').click(function(){
+                $('#identificacao').attr('value','');
+                limpar();
+            });
+        });
+    </script>
+{% endblock scripts %}
+
+{% block subconteudo %}
+    <h1>Confirmar Inscrição</h1>
+    <div id="minicursos">
+        <table>
+            <th>
+                Minicurso
+            </th>
+            <th>
+                Vagas Disponíveis
+            </th>
+            <th>
+                Horário
+            </th>
+            {% for minicurso in minicursos %}
+                <tr>
+                    <td><a href="/inscricao/lista_de_presenca_do_minicurso/{{ minicurso.id }}">{{ minicurso.titulo }}</a></td>
+                    <td class="vagas">
+                        {% ifnotequal minicurso.vagas_disponiveis 0 %}
+                            {{ minicurso.vagas_disponiveis }}
+                        {% else %}
+                            <span class="atencao">{{ minicurso.vagas_disponiveis }}</span>
+                        {% endifnotequal %}
+                    </td>
+                    <td class="vagas">{{ minicurso.hora }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div id="confirmacao">
+        <span>Informe o código do inscrito ou o nome completo usado para inscrição: </span>
+        <input type="text" id="identificacao" />
+        <input type="button" id="botao_buscar" value=" Buscar " />
+        <input type="button" id="botao_limpar" value=" Limpar " />
+        <div id="mensagem">{{ mensagem }}</div>
+        <div id="dados_do_inscrito"></div>
+        <div id="formulario_confirmacao">
+            <form method="post" action="">{% csrf_token %}
+                <input type="hidden" value="" id="id_inscrito" name="id_inscrito" />
+                <input type="submit" value=" Confirmar " />
+            </form>
+        </div>
+    </div>
+{% endblock subconteudo %}

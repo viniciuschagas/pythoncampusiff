@@ -17,7 +17,7 @@ def gerar_minicursos_da_manha(request):
     html = ''
     
     if len(minicursos_da_manha) > 0:
-        html += u'Minicurso da manhã:'
+        html += u'Minicurso da manhã: '
         html += '<select id="id_minicurso_da_manha" name="minicurso_da_manha">'
         html += '<option selected="selected" value="">---------</option>'
 
@@ -42,7 +42,7 @@ def gerar_minicursos_da_tarde(request):
     html = ''
     
     if len(minicursos_da_tarde) > 0:
-        html += u'Minicurso da tarde:'
+        html += u'Minicurso da tarde: '
         html += '<select id="id_minicurso_da_tarde" name="minicurso_da_tarde">'
         html += '<option selected="selected" value="">---------</option>'
 

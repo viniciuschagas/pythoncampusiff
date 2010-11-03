@@ -1,0 +1,29 @@
+#minicursos {
+    margin-bottom: 10px;
+}
+#minicursos table {
+    border: 1px solid #000000;
+    border-collapse: collapse;
+}
+
+#minicursos table th, tr, td {
+    border: 1px solid #000000;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#minicursos td.vagas {
+    text-align: right;
+}
+
+#dados_do_inscrito {
+    margin-bottom: 10px;
+}
+
+.disponivel, .confirmado {
+    color: #69B92D;
+}
+
+.atencao, .esgotado, .naoconfirmado, #mensagem {
+    color: #d40100;
+}

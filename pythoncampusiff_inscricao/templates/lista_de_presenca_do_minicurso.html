@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br" lang="pt-br">
+<head>
+    <title>Lista de Presença do Minicurso "{{ minicurso.titulo }}"</title>
+    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/estilo/pythoncampusiff_inscricao/lista_de_presenca.css"/>
+</head>
+<body>
+    <div id="cabecalho">
+        <div id="logo">
+            <img alt="PythOnCampus IFF" title="PythOnCampus IFF" src="{{ MEDIA_URL }}/imagens/pythoncampusiff_base/logo.png"/>
+        </div>
+        <div id="dados_do_minicurso">
+            <div>Minicurso: {{ minicurso.titulo }}</div>
+            <div>Responsável: {{ minicurso.responsavel.nome }}</div>
+            <div>Início: {{ minicurso.hora }}</div>
+        </div>
+    </div>
+    <h1>Lista de Presença</h1>
+    <table>
+        <th>
+            Nome
+        </th>
+        <th>
+            Assinatura
+        </th>
+        {% for inscrito in inscritos %}
+            <tr>
+                <td>{{ inscrito.nome }}</td>
+                <td></td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

@@ -2,9 +2,117 @@
 
 {% block titulo %} - Inscrição{% endblock titulo %}
 
+{% block estilo_extra %}
+    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/estilo/pythoncampusiff_inscricao/inscricao.css" />
+{% endblock estilo_extra %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ MEDIA_URL }}/javascripts/jquery-1.4.2.js"></script>
+    <script type="text/javascript">
+        function esconder_minicursos()
+            {
+                $('#minicursos').hide();
+                $('#minicursos_da_manha').html('');
+                $('#minicursos_da_tarde').html('');
+                $('#aviso_minicurso').show();
+                $('#botao_exibir_minicursos').show();
+            }
+
+        function exibir_minicursos()
+            {
+                $.post(
+                    '/atividades/minicursos_da_manha',
+                    {},
+                    function(data) {
+                        $('#minicursos_da_manha').html(data);
+                    }
+                );
+                $.post(
+                    '/atividades/minicursos_da_tarde',
+                    {},
+                    function(data) {
+                        $('#minicursos_da_tarde').html(data);
+                    }
+                );
+                $('#minicursos').show();
+                $('#botao_exibir_minicursos').hide();
+                $('#botao_minicursos_hide').show();
+                $('#aviso_minicurso').hide();
+            }
+
+        function mascara_maiusculo() {
+            $('#id_nome').keyup(function(){
+                $(this).attr('value',$(this).val().toUpperCase());
+            });
+            $('#id_instituicao').keyup(function(){
+                $(this).attr('value',$(this).val().toUpperCase());
+            });
+        }
+
+        function mascara_cpf() {
+            $('#id_cpf').keyup(function(){
+                if ($(this).val().length <= 14) {
+                    $(this).attr(
+                        'value',
+                        $(this).val()
+                            .replace(/\D/g,'')
+                            .replace(/(\d{3})(\d)/,'$1.$2')
+                            .replace(/(\d{3})(\d)/,'$1.$2')
+                            .replace(/(\d{3})(\d)/,'$1-$2')
+                    );
+                }
+                else {
+                    $(this).attr('value',$(this).val().substr(0,14));
+                }
+            });
+        }
+
+        $(document).ready(function(){
+            mascara_cpf();
+            mascara_maiusculo();
+            esconder_minicursos();
+            $('#exibir_minicursos').click(function(){
+                exibir_minicursos();
+            });
+            $('#esconder_minicursos').click(function(){
+                esconder_minicursos();
+            });
+            $('#id_nome').focus();
+        });
+    </script>
+{% endblock scripts %}
+
 {% block conteudo %}
-    <h1>Inscrições disponíveis em breve</h1>
-    <p>
-        As inscrições estarão disponíveis a partir do dia 03 de novembro de 2010. Aguarde!
-    </p>
+    <h1>Inscrições</h1>
+    <!--<p>-->
+    <!--    As inscrições estarão disponíveis a partir do dia 03 de novembro de 2010. Aguarde!-->
+    <!--</p>-->
+    <form method="post" action="">{% csrf_token %}
+        {% for field in formulario %}
+            <div class="field">
+                <div>{{ field.label_tag }}:</div>
+                <div>{{ field }}</div>
+                <div>{{ field.help_text }}</div>
+                <div>{{ field.errors }}</div>
+            </div>
+        {% endfor %}
+        <div class="aviso_minicurso" id="aviso_minicurso">
+            Para participar apenas das palestras, clique em " Confirmar inscrição ".
+        </div>
+        <div id="minicursos">
+            <div id="minicursos_da_manha"></div>
+            <div id="minicursos_da_tarde"></div>
+            <div class="aviso">
+                Para assegurar sua vaga, traga 1kg de arroz, feijão ou macarrão para cada minicurso no qual você estiver inscrito até 26/11/2009.<br/>
+                Será respeitada a ordem de entrega dos alimentos.
+             </div>
+            <div id="botao_minicursos_hide" style="display: none;">
+                <input type="button" id="esconder_minicursos" value="Não desejo mais participar dos minicursos.">
+            </div>
+        </div>
+        <div id="botao_exibir_minicursos">
+            <input type="button" id="exibir_minicursos" value="Desejo participar dos minicursos.">
+         </div>
+        <input type="submit" value=" Confirmar inscrição " />
+    </form>
 {% endblock conteudo %}

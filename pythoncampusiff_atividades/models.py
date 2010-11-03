@@ -65,11 +65,6 @@ class Atividade(models.Model):
     
     def __unicode__(self):
         return self.titulo
-    
-    def registrar_participante(self, participante):
-        if self.tipo == 'Minicurso':
-            self.inscrito_set.add(participante)
-            self.save()
 
     def decrementar_vaga(self):
         if self.tipo == 'Minicurso':
